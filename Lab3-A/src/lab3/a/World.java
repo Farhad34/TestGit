@@ -23,7 +23,8 @@ public class World {
     private double width, height; // this worlds width and height
 
     private final Shape[] shapes; // an array of references to the shapes
-
+    
+   // private final Line[] lines;
     /**
      * Creates a new world, containing a pad and a set of balls. NB! The worlds
      * y-axis points downward.
@@ -35,7 +36,12 @@ public class World {
         this.width = width;
         this.height = height;
 
-        shapes = new Shape[0]; // an array of references (change to non-zero size)
+        shapes = new Shape[0];
+        
+        //lines= new Line[0];
+        //lines[0] = new Line(40.0,40.0,23.0,35.0);
+        
+     // an array of references (change to non-zero size)
         // Create the actual Shape objects (sub types)
         // ....
     }
