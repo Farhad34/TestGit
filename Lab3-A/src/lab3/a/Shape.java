@@ -106,17 +106,25 @@ abstract public class Shape {
     /**
      * @return the velocity in the x-direction, pixels/second
      */
-    double getDx() {
+    public double getDx() {
         return dx;
     }
 
     /**
      * @return the velocity in the y-direction, pixels/second
      */
-    double getDy() {
+    public double getDy() {
         return dy;
     }
-
+    
+     public void setDy(double newDy ) {
+         dy=newDy;
+    }
+    
+   public  void setDx(double newDx) {
+        dx= newDx;
+    }
+    
     /**
      * Sets the velocity, pixels/second, to (newDx, newDy).
      *
