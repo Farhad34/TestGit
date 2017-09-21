@@ -24,7 +24,6 @@ public class World {
 
     private final Shape[] shapes; // an array of references to the shapes
     
-   // private final Line[] lines;
     /**
      * Creates a new world, containing a pad and a set of balls. NB! The worlds
      * y-axis points downward.
@@ -36,19 +35,21 @@ public class World {
         this.width = width;
         this.height = height;
 
-        shapes = new Shape[1];
-        shapes[0]=new Line (22,33,44,66, Color.AQUA);
+        shapes = new Shape[2];
+        shapes[0]=new Line (22,33,104,66, Color.AQUA);
+        shapes[1]=new Line (77,85,200,90, Color.AQUA);
         
-        width = 13;
-        System.out.println(width);
         
-        height = 13/2;
-        System.out.println(height);
-
+        for(Shape s: shapes)
+        {
+           s.setVelocity(100, 100);
+            //s.setColor(Color.BLUEVIOLET);
+           //s.moveTo(113,77);
+           
+           
+        }
         
-        //lines= new Line[0];
-        //lines[0] = new Line(40.0,40.0,23.0,35.0);
-        
+         
      // an array of references (change to non-zero size)
         // Create the actual Shape objects (sub types)
         // ....
