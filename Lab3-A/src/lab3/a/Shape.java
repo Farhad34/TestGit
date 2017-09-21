@@ -106,6 +106,7 @@ abstract public class Shape {
     /**
      * @return the velocity in the x-direction, pixels/second
      */
+<<<<<<< HEAD
     double getDx() {
         return dx;
     }
@@ -173,6 +174,95 @@ abstract public class Shape {
             double boxX, double boxY, 
             double boxWidth, double boxHeight); 
     
+=======
+    public double getDx() {
+        return dx;
+    }
+
+    /**
+     * @return the velocity in the y-direction, pixels/second
+     */
+    public double getDy() {
+        return dy;
+    }
+    
+     public void setDy(double newDy ) {
+         dy=newDy;
+    }
+    
+   public  void setDx(double newDx) {
+        dx= newDx;
+    }
+    
+    /**
+     * Sets the velocity, pixels/second, to (newDx, newDy).
+     *
+     * @param newDx
+     * @param newDy
+     */
+    public void setVelocity(double newDx, double newDy) {
+        dx = newDx;
+        dy = newDy;
+    }
+
+    /**
+     * Moves the center of the ball to (newX, newY).
+     *
+     * @param newX
+     * @param newY
+     */
+    public void moveTo(double newX, double newY) {
+        x = newX;
+        y = newY;
+    }
+
+    /**
+     * Move the shape a distance depending on the elapsed time in nanoseconds.
+     * NB - the velocitey is measured in pixels/second.
+     *
+     * @param elapsedTimeNs the elapsed time in nanoseconds.
+     */
+    public void move(long elapsedTimeNs) {
+        x += dx * elapsedTimeNs / BILLION;
+        y += dy * elapsedTimeNs / BILLION;
+    }
+
+    /**
+     * Paint the shape on the screen using the grapchics context. Override this
+     * method in subtypes.
+     *
+     * @param gc the GraphicsContext for drawing
+     */
+    abstract public void paint(GraphicsContext gc);
+
+    /**
+     * Constrains the shape inside the given area/box, by bouncing it off att
+     * the edges. The shape is considered a point in this implementation which
+     * causes erratic behaviour at the left and bottom edges. Subtypes must
+     * override this method to correct this behaviour.
+     *
+     * @param boxX upper left corner of the "box"
+     * @param boxY upper left corner of the "box"
+     * @param boxWidth
+     * @param boxHeight
+     */
+    public void constrain(
+            double boxX, double boxY, 
+            double boxWidth, double boxHeight) {
+        // If outside the box - calculate new dx and dy
+        if (x < boxX) {
+            dx = Math.abs(dx);
+        } else if (x > boxWidth) {
+            dx = -Math.abs(dx);
+        }
+        if (y < boxY) {
+            dy = Math.abs(dy);
+        } else if (y > boxHeight) {
+            dy = -Math.abs(dy);
+        }
+    }
+
+>>>>>>> branch 'master' of https://github.com/Farhad34/TestGit.git
     @Override
     public String toString() {
         String info

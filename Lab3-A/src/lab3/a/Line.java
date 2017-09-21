@@ -14,7 +14,8 @@ import javafx.scene.paint.Color;
  */
 public class Line extends Shape {
     
-   private double x2, y2;
+   private double x2, y2, dx2,dy2;
+   
    
    public Line(double x, double y, double x2, double y2, Color color){
        
@@ -50,27 +51,39 @@ public class Line extends Shape {
        
     }
     
-//    @Override
-//    public void move(long elapsedTimeNs)
-//    {
-//        super.move(elapsedTimeNs);
-//        x2 +=getDx()* elapsedTimeNs / BILLION;
-//        y2 +=getDy()* elapsedTimeNs / BILLION;
-//             
-//    }
-//    @Override
-//    public void setVelocity(double newDx, double newDy) {
-//        
-//        super.setVelocity(newDx, newDy);
-//        
-//    }
-//    
-//    @Override
-//    public void constrain(
-//            double boxX, double boxY, 
-//            double boxWidth, double boxHeight) {
-//        // If outside the box - calculate new dx and dy
-//        super.constrain(boxX, boxY, boxWidth, boxHeight);
-//    }
+    @Override
+    public void move(long elapsedTimeNs)
+    {
+        super.move(elapsedTimeNs);
+        x2 +=this.getDx()* elapsedTimeNs / BILLION;
+        y2 +=this.getDy()* elapsedTimeNs / BILLION;
+             
+    }
+   
     
+    @Override
+   public void constrain(
+            double boxX, double boxY, 
+            double boxWidth, double boxHeight) {
+        // If outside the box - calculate new dx and dy
+        
+                
+        if (x2 < boxX || this.getX()<boxX) {
+           dx2  = Math.abs(this.getDx()); 
+           this.setDx(dx2);  
+        } 
+        else if (x2 > boxWidth || this.getX() > boxWidth) {
+            dx2  = Math.abs(this.getDx()); 
+            this.setDx(dx2);
+        }
+        if (y2 < boxY || this.getY()< boxY) {
+            dy2 = Math.abs(getDy());
+            this.setDy(dy2);
+        } 
+        else if (y2 > boxHeight || this.getY() > boxHeight) {
+              dy2 = Math.abs(getDy());
+            this.setDy(dy2);
+        }
+        
+   }
 }
