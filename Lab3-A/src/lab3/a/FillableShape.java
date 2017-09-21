@@ -2,6 +2,8 @@ package lab3.a;
 
 import javafx.scene.paint.Color;
 
+//@author FarHad Salehi and Tahir Sabe
+
 abstract public class FillableShape extends Shape{
 	
 	private boolean filled;

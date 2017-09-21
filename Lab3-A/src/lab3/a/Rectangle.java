@@ -3,6 +3,8 @@ package lab3.a;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+//@author FarHad Salehi and Tahir Sabe
+
 public class Rectangle extends FillableShape{
 	
 	private double width, height;

@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 
 /**
  *
- * @author FarHad
+ * @author FarHad Salehi and Tahir Sabe
  */
 public class Line extends Shape {
     
