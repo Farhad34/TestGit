@@ -41,6 +41,10 @@ public class World {
         width = 13;
         System.out.println(width);
         
+        height = 13/2;
+        System.out.println(height);
+
+        
         //lines= new Line[0];
         //lines[0] = new Line(40.0,40.0,23.0,35.0);
         
