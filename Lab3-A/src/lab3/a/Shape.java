@@ -170,25 +170,23 @@ abstract public class Shape {
      * @param boxWidth
      * @param boxHeight
      */
-    abstract public void constrain(
+    
+    public void constrain(
             double boxX, double boxY, 
-            double boxWidth, double boxHeight); 
-    
-    public void setDy(double newDy ) {
-         dy=newDy;
+            double boxWidth, double boxHeight) {
+		        // If outside the box - calculate new dx and dy
+        if (x < boxX) {
+           dx = Math.abs(dx);
+        } else if (x > boxWidth) {
+        	dx = -Math.abs(dx);
+        }
+        if (y < boxY) {
+        	dy = Math.abs(dy);
+        } else if (y > boxHeight) {
+        	dy = -Math.abs(dy);
+        }
     }
-    
-    public  void setDx(double newDx) {
-        dx= newDx;
-    }
-    
-    /**
-     * Sets the velocity, pixels/second, to (newDx, newDy).
-     *
-     * @param newDx
-     * @param newDy
-     */
-    
+
         
     @Override
     public String toString() {

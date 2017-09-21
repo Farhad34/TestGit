@@ -35,15 +35,17 @@ public class World {
         this.width = width;
         this.height = height;
 
-        shapes = new Shape[2];
-        shapes[0]=new Line (22,33,104,66, Color.AQUA);
-        shapes[1]=new Line (77,85,200,90, Color.AQUA);
+        shapes = new Shape[4];
+        shapes[0]=new Line (10,55,104,66, Color.CORAL);
+        shapes[1]=new Line (64,85,200,90, Color.AQUA);
+        shapes[2]=new Circle(64,54,Color.VIOLET,90,true);
+        shapes[3]=new Rectangle(64,54,Color.DARKOLIVEGREEN,150,50,true);
         
         
         for(Shape s: shapes)
         {
            s.setVelocity(100, 100);
-            //s.setColor(Color.BLUEVIOLET);
+           //s.setColor(Color.BLUEVIOLET);
            //s.moveTo(113,77);
            
            

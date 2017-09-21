@@ -1,21 +1,22 @@
 package lab3.a;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 public class Rectangle extends FillableShape{
 	
 	private double width, height;
 	
-	public Rectangle() {
-		super();
-		width = 6;
-		height = 2;
-	}
-	
-	public Rectangle(double width, double height) {
-		super();
+	public Rectangle(double x, double y, Color color, double width, double height, boolean fill) {
+		super(x,y,color,fill);
 		this.width = width;
 		this.height = height;
+	}
+	
+	public Rectangle() {
+		super();
+		width = 60;
+		height = 20;
 	}
 	
 	public double getWidth() {
@@ -36,26 +37,35 @@ public class Rectangle extends FillableShape{
 
 	@Override
 	public void paint(GraphicsContext gc) {
-		// TODO Auto-generated method stub
-		
+		gc.setStroke(getColor());
+		gc.strokeRect(getX(),getY(), width, height);
+		if(isFilled()) {
+			gc.setFill(getColor());
+			gc.fillRect(getX(),getY(), width, height);
+		}
 	}
 	
 	@Override
-	public void constrain(
-            double boxX, double boxY, 
-            double boxWidth, double boxHeight) {
-		        // If outside the box - calculate new dx and dy
-        if (getDx() < boxX) {
-            setDx(Math.abs(getDx()));
-        } else if (getDx() > boxWidth) {
-        	setDx(-Math.abs(getDx()));
-        }
-        if (getDy() < boxY) {
-        	setDy(Math.abs(getDy()));
-        } else if (getDy() > boxHeight) {
-        	setDy(-Math.abs(getDy()));
-        }
-    }
+	   public void constrain(
+	            double boxX, double boxY, 
+	            double boxWidth, double boxHeight) {
+	        // If outside the box - calculate new dx and dy
+	        super.constrain(boxX, boxY, boxWidth, boxHeight);
+	        double dx = getDx(),dy = getDy();
+	        
+	        if ((getX()+width) < boxX) {
+	            dx = Math.abs(getDx());
+	         } else if ((getX()+width) > boxWidth) {
+	         	dx = -Math.abs(getDx());
+	         }
+	         if ((getY()+height) < boxY) {
+	         	dy = Math.abs(getDy());
+	         } else if ((getY()+height) > boxHeight) {
+	         	dy = -Math.abs(getDy());
+	         }
+	         setVelocity(dx, dy);
+	   }
+
 
 	@Override
 	public String toString() {

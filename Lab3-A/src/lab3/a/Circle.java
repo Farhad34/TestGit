@@ -1,19 +1,20 @@
 package lab3.a;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 public class Circle extends FillableShape{
 	
 	private double diameter;
 	
-	public Circle() {
-		super();
-		diameter = 3;
+	public Circle(double x, double y, Color color, double diameter, boolean fill) {
+		super(x, y, color, fill);
+		this.diameter = diameter;
 	}
 	
-	public Circle(double diameter) {
+	public Circle() {
 		super();
-		this.diameter = diameter;
+		diameter = 50;
 	}
 	
 	public double getDiameter() {
@@ -26,26 +27,34 @@ public class Circle extends FillableShape{
 
 	@Override
 	public void paint(GraphicsContext gc) {
-		// TODO Auto-generated method stub
-		
+		gc.setStroke(getColor());
+		gc.strokeOval(getX(),getY(),diameter,diameter);
+		if(isFilled()) {
+			gc.setFill(getColor());
+			gc.fillOval(getX(),getY(),diameter,diameter);
+		}
 	}
 	
 	@Override
-	public void constrain(
-            double boxX, double boxY, 
-            double boxWidth, double boxHeight) {
-		        // If outside the box - calculate new dx and dy
-        if (getDx() < boxX) {
-            setDx(Math.abs(getDx()));
-        } else if (getDx() > boxWidth) {
-        	setDx(-Math.abs(getDx()));
-        }
-        if (getDy() < boxY) {
-        	setDy(Math.abs(getDy()));
-        } else if (getDy() > boxHeight) {
-        	setDy(-Math.abs(getDy()));
-        }
-    }
+	   public void constrain(
+	            double boxX, double boxY, 
+	            double boxWidth, double boxHeight) {
+	        // If outside the box - calculate new dx and dy
+	        super.constrain(boxX, boxY, boxWidth, boxHeight);
+	        double dx = getDx(),dy = getDy();
+	        
+	        if ((getX() + diameter) < boxX) {
+	            dx = Math.abs(getDx());
+	         } else if ((getX() + diameter) > boxWidth) {
+	         	dx = -Math.abs(getDx());
+	         }
+	         if ((getY() + diameter) < boxY) {
+	         	dy = Math.abs(getDy());
+	         } else if ((getY() + diameter) > boxHeight) {
+	         	dy = -Math.abs(getDy());
+	         }
+	         setVelocity(dx, dy);
+	   }
 
 	@Override
 	public String toString() {
