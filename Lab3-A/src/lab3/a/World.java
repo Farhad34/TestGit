@@ -16,7 +16,7 @@ import javafx.scene.paint.Color;
  * A representation of a world containing a set of moving shapes. NB! The worlds
  * y-axis points downward.
  *
- * @author Anders LindstrÃ¶m, anderslm@kth.se 2015-09-16
+ * @author Tahir Sabe, Farhad Salehi 2017-09-21
  */
 public class World {
 
@@ -39,12 +39,6 @@ public class World {
         shapes = new Shape[1];
         shapes[0]=new Line (22,33,44,66, Color.AQUA);
         
-        width = 13;
-        System.out.println(width);
-        
-        height = 13/2;
-        System.out.println(height);
-
         
         //lines= new Line[0];
         //lines[0] = new Line(40.0,40.0,23.0,35.0);

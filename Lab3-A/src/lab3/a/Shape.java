@@ -169,22 +169,10 @@ abstract public class Shape {
      * @param boxWidth
      * @param boxHeight
      */
-    public void constrain(
+    abstract public void constrain(
             double boxX, double boxY, 
-            double boxWidth, double boxHeight) {
-        // If outside the box - calculate new dx and dy
-        if (x < boxX) {
-            dx = Math.abs(dx);
-        } else if (x > boxWidth) {
-            dx = -Math.abs(dx);
-        }
-        if (y < boxY) {
-            dy = Math.abs(dy);
-        } else if (y > boxHeight) {
-            dy = -Math.abs(dy);
-        }
-    }
-
+            double boxWidth, double boxHeight); 
+    
     @Override
     public String toString() {
         String info
