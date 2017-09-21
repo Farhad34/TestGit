@@ -36,7 +36,8 @@ public class World {
         this.width = width;
         this.height = height;
 
-        shapes = new Shape[0];
+        shapes = new Shape[1];
+        shapes[0]=new Line (22,33,44,66, Color.AQUA);
         
         width = 13;
         System.out.println(width);
