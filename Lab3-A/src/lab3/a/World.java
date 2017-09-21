@@ -38,6 +38,9 @@ public class World {
 
         shapes = new Shape[0];
         
+        width = 13;
+        System.out.println(width);
+        
         //lines= new Line[0];
         //lines[0] = new Line(40.0,40.0,23.0,35.0);
         
