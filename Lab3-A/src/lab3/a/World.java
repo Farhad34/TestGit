@@ -45,7 +45,7 @@ public class World {
         {
            if( s instanceof Line){
            Line temp= (Line) s;                     // Only type of line will move and rotate
-           s.setVelocity(100, 100);      
+           temp.setVelocity(100, 100);      
            }                     
         } 
     }
