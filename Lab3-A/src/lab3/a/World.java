@@ -38,14 +38,25 @@ public class World {
         shapes = new Shape[4];
         shapes[0]=new Line (10,55,104,66, Color.RED);
         shapes[1]=new Line (64,85,200,90, Color.AQUA);
+        
         shapes[2]=new Circle(64,124,Color.VIOLET,90,true);
         shapes[3]=new Rectangle(64,54,Color.ORANGE,150,50,true);
-         
+        
+        shapes[3].setVelocity(100, 100);
+        
         for(Shape s: shapes)
         {
            if( s instanceof Line){
            Line temp= (Line) s;                     // Only type of line will move and rotate
            temp.setVelocity(100, 100);      
+           }                     
+        } 
+        for(Shape a: shapes)
+        {
+           if( a instanceof FillableShape){
+            FillableShape temp= (FillableShape) a;     // Type of fillableshape will not filled
+            temp.setFilled(false);
+           
            }                     
         } 
     }
